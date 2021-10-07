@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',#Indica que use rest Framework
-    'MoveAndFlowApp,'#indica que use la app recientemente creada y url.py puede mapearla/usarla
+    'MoveAndFlowApp',#indica que use la app recientemente creada y url.py puede mapearla/usarla
 
 ]
 
