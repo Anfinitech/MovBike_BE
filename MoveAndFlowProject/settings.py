@@ -73,6 +73,12 @@ REST_FRAMEWORK = {
             ) 
 }
 
+# Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion 
+# lo dejo comentado mientras hay mas claridad sobre ello
+
+# AUTH_USER_MODEL = 'authApp.Administrador'
+
+
 ROOT_URLCONF = 'MoveAndFlowProject.urls'
 
 TEMPLATES = [
