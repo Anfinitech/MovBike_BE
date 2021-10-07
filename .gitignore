@@ -48,7 +48,7 @@ Thumbs.db
 *.mov
 *.wmv
 
-# Django #
+# Django Projects #
 *.log
 *.pot
 *.pyc
