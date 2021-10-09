@@ -164,3 +164,9 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Datos De seguridad BD
+*.py[co]
+*.sw[po]
+*~
+/secrets.json
