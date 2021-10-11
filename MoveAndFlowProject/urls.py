@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from MoveAndFlowApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('estacion/', views.EstacionCreateView.as_view()),
+    #path('estacion/', views.EstacionDetailView.as_view()),
 ]
