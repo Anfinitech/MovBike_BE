@@ -1,6 +1,11 @@
 from rest_framework import status, views
 from rest_framework.response import Response
 from MoveAndFlowApp.serializers.bicicletaSerializer import BicicletaSerializer
+'''
+
+Esta vista efectivamente devuelve el JSON de la bici
+pero en bicicletaView.py hay una clase con el mismo
+nombre que hace lo mismo pero se escribe de manera diferente.
 
 class BicicletaCreateView(views.APIView):
     def post(self, request, *args, **kwargs):
@@ -8,4 +13,4 @@ class BicicletaCreateView(views.APIView):
             serializer.is_valid(raise_exception=True)
             serializer.save()
             return Response(request.data)
-
+'''

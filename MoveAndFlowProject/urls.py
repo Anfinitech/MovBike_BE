@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MoveAndFlowApp import views
+from MoveAndFlowApp import views as MnFViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('estacion/', views.EstacionCreateView.as_view()),
-    path('bicicleta/', views.BicicletaCreateView.as_view()),
+    path('estacion/', MnFViews.EstacionCreateView.as_view()),
+    path('estacion/<int:pk>/', MnFViews.EstacionDetailView.as_view()),
+    path('bicicleta/', MnFViews.BicicletaCreateView.as_view()),
+    path('bicicleta/<int:pk>/', MnFViews.BicicletaDetailView.as_view()),
+    path('bicicleta/location/<int:estacion>/', MnFViews.BicicletaEstacionView.as_view()),
+    path('bicicleta/update/<int:pk>/', MnFViews.BicicletaUpdateView.as_view()),
+    path('bicicleta/remove/<int:pk>/', MnFViews.BicicletaDeleteView.as_view()),
 ]
