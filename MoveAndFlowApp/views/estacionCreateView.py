@@ -7,4 +7,4 @@ class EstacionCreateView(views.APIView):
             serializer = EstacionSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             serializer.save()
-
+            return Response("Nice")

@@ -1,7 +1,26 @@
 from MoveAndFlowApp.models import Estacion, Bicicleta
 from rest_framework import serializers
-from .bicicletaSerializer import BicicletaSerializer
+# from .bicicletaSerializer import BicicletaSerializer
 
+
+class EstacionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Estacion
+        fields = ['e_nombre', 'e_estado', 'e_capacidad']
+
+        def create(self, validated_data):
+            estacionInstance = Estacion.objects.create(**validated_data)
+            return estacionInstance
+
+        def to_representation(self, obj):
+            estacion = Estacion.objects.get(e_id=obj.e_id)
+            return {
+                "e_nombre" : estacion.e_nombre,
+                "e_estado" : estacion.e_estado,
+                "e_capacidad" : estacion.e_capacidad,
+            }
+"""
 class EstacionSerializer(serializers.ModelSerializer):
     bicicleta = BicicletaSerializer()
 
@@ -27,3 +46,4 @@ class EstacionSerializer(serializers.ModelSerializer):
                     "b_condicion" : bicicleta.b_condicion,
                 }
             }
+"""

@@ -20,5 +20,5 @@ from MoveAndFlowApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('estacion/', views.EstacionCreateView.as_view()),
-    #path('estacion/', views.EstacionDetailView.as_view()),
+    path('bicicleta/', views.BicicletaCreateView.as_view()),
 ]
