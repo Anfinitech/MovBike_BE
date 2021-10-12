@@ -18,7 +18,7 @@ class BicicletaCreateView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
     
-        return Response("Transaccion exitosa", status=status.HTTP_201_CREATED)
+        return Response("Creación exitosa", status=status.HTTP_201_CREATED)
 
 class BicicletaDetailView(generics.RetrieveAPIView):
     serializer_class = BicicletaSerializer

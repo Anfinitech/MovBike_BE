@@ -19,9 +19,12 @@ from MoveAndFlowApp import views as MnFViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('estacion/', MnFViews.EstacionCreateView.as_view()),
+    path('estacion/new/', MnFViews.EstacionCreateView.as_view()),
+    path('estacion/all/', MnFViews.EstacionesView.as_view()),
     path('estacion/<int:pk>/', MnFViews.EstacionDetailView.as_view()),
-    path('bicicleta/', MnFViews.BicicletaCreateView.as_view()),
+    path('estacion/update/<int:pk>/', MnFViews.EstacionUpdateView.as_view()),
+    path('estacion/remove/<int:pk>/', MnFViews.EstacionDeleteView.as_view()),
+    path('bicicleta/new/', MnFViews.BicicletaCreateView.as_view()),
     path('bicicleta/<int:pk>/', MnFViews.BicicletaDetailView.as_view()),
     path('bicicleta/location/<int:estacion>/', MnFViews.BicicletaEstacionView.as_view()),
     path('bicicleta/update/<int:pk>/', MnFViews.BicicletaUpdateView.as_view()),

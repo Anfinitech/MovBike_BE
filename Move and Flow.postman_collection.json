@@ -6,160 +6,220 @@
 	},
 	"item": [
 		{
-			"name": "CreateStation",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"e_nombre\" : \"Plasma\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 60\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "CRUD Bikes",
+			"item": [
+				{
+					"name": "Update Bike",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"b_condicion\": true,\n        \"b_en_estacion\": 4\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicleta/update/10/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicleta",
+								"update",
+								"10",
+								""
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8000/estacion/",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"estacion",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve Station with ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8000/estacion/2",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"estacion",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "CreateBike",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"b_condicion\" : false,\n    \"b_en_estacion\" : 1\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Retrieve Bike with ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicleta/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicleta",
+								"4"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8000/bicicleta/",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"bicicleta",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve Bike with ID",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Retrieve Bikes in Station",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bicicleta/location/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicleta",
+								"location",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:8000/bicicleta/4",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"bicicleta",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve Bikes in Station",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8000/bicicleta/location/1",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"bicicleta",
-						"location",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Bike",
-			"request": {
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n        \"b_condicion\": true,\n        \"b_en_estacion\": 4\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "CreateBike",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"b_condicion\" : true,\n    \"b_en_estacion\" : 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicleta/new/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicleta",
+								"new",
+								""
+							]
 						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8000/bicicleta/update/10/",
-					"host": [
-						"localhost"
-					],
-					"port": "8000",
-					"path": [
-						"bicicleta",
-						"update",
-						"10",
-						""
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "CRUD Stations",
+			"item": [
+				{
+					"name": "CreateStation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"e_nombre\" : \"Lava\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 70\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/estacion/new",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estacion",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Station with ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/estacion/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estacion",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/estacion/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estacion",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Station",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"e_nombre\" : \"Fuego Negro\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 70\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/estacion/update/3/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estacion",
+								"update",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Delete Bike",
