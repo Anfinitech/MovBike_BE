@@ -4,7 +4,7 @@ from MoveAndFlowApp.serializers.estacionSerializer import EstacionSerializer
 
 '''
 Esta vista efectivamente devuelve el JSON de la bici
-pero en bicicletaView.py hay una clase con el mismo
+pero en estacionView.py hay una clase con el mismo
 nombre que hace lo mismo pero se escribe de manera diferente.
 
 class EstacionCreateView(views.APIView):
