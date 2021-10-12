@@ -19,14 +19,15 @@ from MoveAndFlowApp import views as MnFViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('estacion/new/', MnFViews.EstacionCreateView.as_view()),
-    path('estacion/all/', MnFViews.EstacionesView.as_view()),
-    path('estacion/<int:pk>/', MnFViews.EstacionDetailView.as_view()),
-    path('estacion/update/<int:pk>/', MnFViews.EstacionUpdateView.as_view()),
-    path('estacion/remove/<int:pk>/', MnFViews.EstacionDeleteView.as_view()),
-    path('bicicleta/new/', MnFViews.BicicletaCreateView.as_view()),
-    path('bicicleta/<int:pk>/', MnFViews.BicicletaDetailView.as_view()),
-    path('bicicleta/location/<int:estacion>/', MnFViews.BicicletaEstacionView.as_view()),
-    path('bicicleta/update/<int:pk>/', MnFViews.BicicletaUpdateView.as_view()),
-    path('bicicleta/remove/<int:pk>/', MnFViews.BicicletaDeleteView.as_view()),
+    path('estaciones/new/', MnFViews.EstacionCreateView.as_view()),
+    path('estaciones/<int:pk>/', MnFViews.EstacionDetailView.as_view()),
+    path('estaciones/all/', MnFViews.EstacionesView.as_view()),
+    path('estaciones/upd/<int:pk>/', MnFViews.EstacionUpdateView.as_view()),
+    path('estaciones/del/<int:pk>/', MnFViews.EstacionDeleteView.as_view()),
+    
+    path('bicicletas/new/', MnFViews.BicicletaCreateView.as_view()),
+    path('bicicletas/<int:pk>/', MnFViews.BicicletaDetailView.as_view()),
+    path('bicicletas/location/<int:estacion>/', MnFViews.BicicletaEstacionView.as_view()),
+    path('bicicletas/upd/<int:pk>/', MnFViews.BicicletaUpdateView.as_view()),
+    path('bicicletas/del/<int:pk>/', MnFViews.BicicletaDeleteView.as_view()),
 ]

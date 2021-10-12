@@ -9,6 +9,35 @@
 			"name": "CRUD Bikes",
 			"item": [
 				{
+					"name": "CreateBike",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"b_condicion\" : true,\n    \"b_en_estacion\" : 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicletas/new/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"new",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Retrieve Bike with ID",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -26,43 +55,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/bicicleta/4",
+							"raw": "localhost:8000/bicicletas/14",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"bicicleta",
-								"4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "CreateBike",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"b_condicion\" : true,\n    \"b_en_estacion\" : 5\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8000/bicicleta/new/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"bicicleta",
-								"new",
-								""
+								"bicicletas",
+								"14"
 							]
 						}
 					},
@@ -74,36 +74,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/bicicleta/location/1",
+							"raw": "localhost:8000/bicicletas/location/2",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"bicicleta",
+								"bicicletas",
 								"location",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Bike",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8000/bicicleta/remove/11/",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"bicicleta",
-								"remove",
-								"11",
-								""
+								"2"
 							]
 						}
 					},
@@ -116,7 +95,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"b_condicion\": true,\n        \"b_en_estacion\": 4\n    }",
+							"raw": "{\n        \"b_condicion\": false,\n        \"b_en_estacion\": 2\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -124,15 +103,36 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/bicicleta/update/10/",
+							"raw": "localhost:8000/bicicletas/upd/10/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"bicicleta",
-								"update",
+								"bicicletas",
+								"upd",
 								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bike",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bicicletas/del/12/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"del",
+								"12",
 								""
 							]
 						}
@@ -151,7 +151,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"e_nombre\" : \"Lava\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 70\n}",
+							"raw": "{\n    \"e_nombre\" : \"Supernova\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 100\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -159,14 +159,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/estacion/new",
+							"raw": "localhost:8000/estaciones/new/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"estacion",
-								"new"
+								"estaciones",
+								"new",
+								""
 							]
 						}
 					},
@@ -178,14 +179,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/estacion/2",
+							"raw": "localhost:8000/estaciones/4",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"estacion",
-								"2"
+								"estaciones",
+								"4"
 							]
 						}
 					},
@@ -197,14 +198,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/estacion/all",
+							"raw": "localhost:8000/estaciones/all/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"estacion",
-								"all"
+								"estaciones",
+								"all",
+								""
 							]
 						}
 					},
@@ -217,7 +219,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"e_nombre\" : \"Fuego Negro\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 70\n}",
+							"raw": "{\n    \"e_nombre\" : \"Cosmos\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 70\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -225,15 +227,15 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8000/estacion/update/3/",
+							"raw": "localhost:8000/estaciones/upd/1/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"estacion",
-								"update",
-								"3",
+								"estaciones",
+								"upd",
+								"1",
 								""
 							]
 						}
@@ -246,15 +248,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/estacion/remove/6/",
+							"raw": "localhost:8000/estaciones/del/10/",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"estacion",
-								"remove",
-								"6",
+								"estaciones",
+								"del",
+								"10",
 								""
 							]
 						}
