@@ -1,0 +1,269 @@
+{
+	"info": {
+		"_postman_id": "9f2b9e5d-9dd2-4a1d-83e3-020df98fabd3",
+		"name": "Move and Flow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD Bikes",
+			"item": [
+				{
+					"name": "CreateBike",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"b_condicion\" : true,\n    \"b_en_estacion\" : 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicletas/new/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"new",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Bike with ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicletas/14",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Bikes in Station",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bicicletas/location/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"location",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bike",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"b_condicion\": false,\n        \"b_en_estacion\": 2\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/bicicletas/upd/10/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"upd",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bike",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/bicicletas/del/12/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"bicicletas",
+								"del",
+								"12",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CRUD Stations",
+			"item": [
+				{
+					"name": "CreateStation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"e_nombre\" : \"Supernova\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/estaciones/new/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estaciones",
+								"new",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Station with ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/estaciones/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estaciones",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve All Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/estaciones/all/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estaciones",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Station",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"e_nombre\" : \"Cosmos\",\n    \"e_estado\" : true,\n    \"e_capacidad\" : 70\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/estaciones/upd/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estaciones",
+								"upd",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Station",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/estaciones/del/10/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"estaciones",
+								"del",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
