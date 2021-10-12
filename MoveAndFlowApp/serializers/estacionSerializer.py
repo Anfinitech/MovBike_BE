@@ -13,11 +13,8 @@ class EstacionSerializer(serializers.ModelSerializer):
             estacionInstance = Estacion.objects.create(**validated_data)
             return estacionInstance
         
-
-
         def to_representation(self, obj):
             estacion = Estacion.objects.get(e_id=obj.e_id)
-            bicicleta = Bicicleta.objects.get(b_en_estacion=obj.e_id)
             return {
                 "e_id" : estacion.e_id,
                 "e_nombre" : estacion.e_nombre,
