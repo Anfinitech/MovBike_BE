@@ -170,3 +170,6 @@ GitHub.sublime-settings
 *.sw[po]
 *~
 /secrets.json
+
+# Credenciales DB
+/MoveAndFlowProject/dbinfo.py

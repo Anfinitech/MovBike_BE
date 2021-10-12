@@ -7,10 +7,11 @@ from django.contrib import admin
 #claridad sobre ello, ver guia de clase #8
 
 # from .models.administrador import Administrador
-# from .models.bicicletas import Bicicletas
-# from .models.estaciones import Estaciones
+from .models.estacion import Estacion
+from .models.bicicleta import Bicicleta
 
-# admin.site.register(Bicicletas)
-# admin.site.register(Estaciones)
-# admin.site.register(Administrador)
+admin.site.register(Estacion)
+admin.site.register(Bicicleta)
+
+# admin.site.register(Usuario)
 
