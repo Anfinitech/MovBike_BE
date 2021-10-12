@@ -5,7 +5,7 @@ from rest_framework import serializers
 class BicicletaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bicicleta
-        fields = ['b_id','b_condicion', 'b_en_estacion']
+        fields = '__all__'
 
         def create(self, validated_data):
             bicicletaInstance = Bicicleta.objects.create(**validated_data)
