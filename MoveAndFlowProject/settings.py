@@ -131,8 +131,16 @@ DATABASES = {
         } 
 }
 '''
-#DATABASES = didierHeroku()
-DATABASES = andresLocal()
+DATABASES = { 
+        'default': { 
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+            'NAME': 'localmnf', 
+            'USER': 'postgres', 
+            'PASSWORD': get_secret('DB_PASSWORD'), 
+            'HOST': 'localhost', 
+            'PORT': '5432',    
+        } 
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
