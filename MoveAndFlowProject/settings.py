@@ -66,7 +66,7 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
             'DEFAULT_PERMISSION_CLASSES': (          
-                'rest_framework.permissions.IsAuthenticated',       
+                'rest_framework.permissions.AllowAny',       
             ), 
             'DEFAULT_AUTHENTICATION_CLASSES': ( 
                 'rest_framework_simplejwt.authentication.JWTAuthentication', 
@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-DATABASES = myDB()
+DATABASES = myHerokuDB()
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

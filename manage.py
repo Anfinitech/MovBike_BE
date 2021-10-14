@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MoveAndFlowProject.settings') # Intercambiar entre .settings y .settings_prod dependiendo 
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MoveAndFlowProject.settings_prod') # Intercambiar entre .settings y .settings_prod dependiendo 
                                                                                    #  del servidor en el que se desee correr el proyecto
     try:
         from django.core.management import execute_from_command_line
