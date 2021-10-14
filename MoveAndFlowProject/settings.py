@@ -106,11 +106,12 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 DATABASES = {
         'default': { 
             'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-            'NAME': 'localmnf', 
-            'USER': 'postgres', 
-            'PASSWORD': 'Admin.753', 
-            'HOST': 'localhost', 
+            'NAME': 'd1t110f9uj4c9s', 
+            'USER': 'reduyeyetpkllc', 
+            'PASSWORD': 'b7e7bfd6121737f54a196cf0dd578616cdf7b3d8909557336586c150242dd721', 
+            'HOST': 'ec2-52-7-228-45.compute-1.amazonaws.com', 
             'PORT': '5432',    
+        }    
         }
 }
 
