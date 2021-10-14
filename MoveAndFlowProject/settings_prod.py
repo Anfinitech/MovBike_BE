@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = projectSecretKey()
+SECRET_KEY = 'django-insecure-8hhy=l^uuczt-p&jldih$^!0q+#6ah9*epvf6(nr)jxamgv%$_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -104,7 +104,16 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-DATABASES = DB_Heroku()
+DATABASES = {
+        'default': { 
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+            'NAME': 'dbbeqt6m64a4bo', 
+            'USER': 'vdoenzkpioyxku', 
+            'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513', 
+            'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com', 
+            'PORT': '5432',    
+        }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
