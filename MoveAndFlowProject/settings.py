@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8hhy=l^uuczt-p&jldih$^!0q+#6ah9*epvf6(nr)jxamgv%$_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -66,7 +66,7 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
             'DEFAULT_PERMISSION_CLASSES': (          
-                'rest_framework.permissions.AllowAny',       
+                'rest_framework.permissions.IsAuthenticated',       
             ), 
             'DEFAULT_AUTHENTICATION_CLASSES': ( 
                 'rest_framework_simplejwt.authentication.JWTAuthentication', 
@@ -103,13 +103,14 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#
 DATABASES = {
         'default': { 
             'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-            'NAME': 'd1t110f9uj4c9s', 
-            'USER': 'reduyeyetpkllc', 
-            'PASSWORD': 'b7e7bfd6121737f54a196cf0dd578616cdf7b3d8909557336586c150242dd721', 
-            'HOST': 'ec2-52-7-228-45.compute-1.amazonaws.com', 
+            'NAME': 'dbbeqt6m64a4bo', 
+            'USER': 'vdoenzkpioyxku', 
+            'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513', 
+            'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com', 
             'PORT': '5432',    
         }    
         
