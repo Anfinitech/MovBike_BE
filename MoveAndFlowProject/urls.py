@@ -18,7 +18,7 @@ from django.urls import path
 from MoveAndFlowApp import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from MoveAndFlowApp.views.userView import UserRegisterView
+from MoveAndFlowApp.views.userView import UserRegisterView, UserAllView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,5 +32,5 @@ urlpatterns = [
     path('register/', UserRegisterView.as_view()),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
-    path('users/', views.UserAllView.as_view()),
+    path('users/', UserAllView.as_view()),
 ]
