@@ -1,2 +1,3 @@
 from .estacionSerializer import EstacionSerializer
 from .bicicletaSerializer import BicicletaSerializer
+from .userSerializer import UserSerializer

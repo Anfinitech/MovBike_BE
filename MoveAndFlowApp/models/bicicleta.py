@@ -7,4 +7,4 @@ class Bicicleta(models.Model):
     b_id = models.AutoField(primary_key=True)
     b_condicion = models.BooleanField()
     b_en_prestamo = models.IntegerField(null=True)
-    b_en_estacion = models.ForeignKey(Estacion, related_name='contiene', on_delete=CASCADE, blank=True, null=True)
+    b_en_estacion = models.ForeignKey(Estacion, related_name = 'contiene', on_delete=CASCADE, blank=True, null=True)

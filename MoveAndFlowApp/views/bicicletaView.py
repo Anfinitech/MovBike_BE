@@ -1,63 +1,46 @@
-from django.conf import settings
+import json
 from rest_framework import generics, status, views
 from rest_framework.response import Response
 
 from MoveAndFlowApp.models.bicicleta import Bicicleta
 from MoveAndFlowApp.serializers.bicicletaSerializer import BicicletaSerializer
 
-
-class BicicletaCreateView(generics.CreateAPIView):
+class BicicletaAllAndCreateView(generics.ListCreateAPIView):
     serializer_class = BicicletaSerializer
+
+    def get_queryset(self):
+        queryset = Bicicleta.objects.all().order_by('b_en_estacion')
+        return queryset
     
     def post(self, request, *args, **kwargs):
         serializer = BicicletaSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        return Response('Bicicleta creada exitosamente en estación[id] ' + str(request.data['b_en_estacion']) + ".", status=status.HTTP_201_CREATED)
     
-        return Response("Creación exitosa", status=status.HTTP_201_CREATED)
+    
 
 
-class BicicletaDetailView(generics.RetrieveAPIView):
+class BicicletaSingularView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BicicletaSerializer
     queryset = Bicicleta.objects.all()
-
-    def get(self,request,*args,**kwargs):    
+    
+    def get(self,request,*args,**kwargs): 
         return super().get(request,*args,**kwargs)
 
-# Una vista que sería más apropiada plantearla desde EstacionExtraDetailView
-class BicicletaEstacionView(generics.ListAPIView):
-    serializer_class = BicicletaSerializer
-    
-    def get_queryset(self):
 
-        queryset = Bicicleta.objects.filter(b_en_estacion=self.kwargs['estacion'])
-        return queryset
-
-
-class BicicletaUpdateView(generics.UpdateAPIView):
-    serializer_class = BicicletaSerializer
-    queryset = Bicicleta.objects.all()
-
-    def post(self, request, *args, **kwargs):
-
-        serializer = BicicletaSerializer(data=request.data['bicicleta_data'])
+    def put(self, request, *args, **kwargs):
+        serializer = BicicletaSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-    
         return super().update(request,*args,**kwargs)
 
+    def delete(self, request, *args, **kwargs):
+        b_eliminada = self.get_object()
+        b_eliminada_en = self.get_object().b_en_estacion
+        super().destroy(request,*args,**kwargs)
+        return Response(status=status.HTTP_200_OK)
 
-class BicicletaDeleteView(generics.DestroyAPIView):
-    serializer_class = BicicletaSerializer
-    queryset = Bicicleta.objects.all()
-
-    def post(self, request, *args, **kwargs):
-
-        serializer = BicicletaSerializer(data=request.data['bicicleta_data'])
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-    
-        return super().destroy(request,*args,**kwargs)
 
 '''
 Otra version de la clase BicicletaCreateView
