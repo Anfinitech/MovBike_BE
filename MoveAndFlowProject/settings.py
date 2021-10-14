@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 ]
 
 SIMPLE_JWT = { 
-            'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10), 
+            'ACCESS_TOKEN_LIFETIME': timedelta(hours=4), 
             'REFRESH_TOKEN_LIFETIME': timedelta(days=1), 
             'ROTATE_REFRESH_TOKENS': False, 
             'BLACKLIST_AFTER_ROTATION': True, 
@@ -114,7 +114,7 @@ DATABASES = {
             'USER': 'vdoenzkpioyxku', 
             'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513', 
             'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com', 
-            'PORT': '5432',    
+            'PORT': '5432',   
         }    
         
 }
