@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-8hhy=l^uuczt-p&jldih$^!0q+#6ah9*epvf6(nr)jxamgv%$_
 DEBUG = False
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',#Indica que use rest Framework
     'MoveAndFlowApp',#indica que use la app recientemente creada y url.py puede mapearla/usarla
+    'corsheaders', #frontend guía 14
 ]
 
 SIMPLE_JWT = { 
@@ -62,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 REST_FRAMEWORK = {
