@@ -12,7 +12,8 @@ class BicicletaSerializer(serializers.ModelSerializer):
     def to_representation(self, obj):
         bicicleta = Bicicleta.objects.get(b_id=obj.b_id)
         return {
-            "b_id" : bicicleta.b_id,
-            "b_condicion" : "En buen estado" if bicicleta.b_condicion else "Averiada",
-            "b_en_estacion" : bicicleta.b_en_estacion.e_nombre,
+            "id" : bicicleta.b_id,
+            "condicion" : "En buen estado" if bicicleta.b_condicion else "Averiada",
+            "estación_id" : bicicleta.b_en_estacion.e_id,
+            "estacion_nombre" : bicicleta.b_en_estacion.e_nombre,
         }

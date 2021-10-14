@@ -173,3 +173,4 @@ GitHub.sublime-settings
 
 # Credenciales DB
 /MoveAndFlowProject/dbinfo.py
+*/dbinfo.py

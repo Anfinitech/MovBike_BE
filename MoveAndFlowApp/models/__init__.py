@@ -4,4 +4,4 @@
 
 from .estacion import Estacion
 from .bicicleta import Bicicleta
-# from .usuario import Usuario
+from .user import User

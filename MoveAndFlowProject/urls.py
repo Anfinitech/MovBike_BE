@@ -15,19 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MoveAndFlowApp import views as MnFViews
+from MoveAndFlowApp import views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('estaciones/new/', MnFViews.EstacionCreateView.as_view()),
-    path('estaciones/<int:pk>/', MnFViews.EstacionDetailView.as_view()),
-    path('estaciones/all/', MnFViews.EstacionesView.as_view()),
-    path('estaciones/upd/<int:pk>/', MnFViews.EstacionUpdateView.as_view()),
-    path('estaciones/del/<int:pk>/', MnFViews.EstacionDeleteView.as_view()),
+
+    path('estaciones/', views.EstacionAllAndCreateView.as_view()),
+    path('estaciones/<int:pk>/', views.EstacionSingularView.as_view()),
     
-    path('bicicletas/new/', MnFViews.BicicletaCreateView.as_view()),
-    path('bicicletas/<int:pk>/', MnFViews.BicicletaDetailView.as_view()),
-    path('bicicletas/location/<int:estacion>/', MnFViews.BicicletaEstacionView.as_view()),
-    path('bicicletas/upd/<int:pk>/', MnFViews.BicicletaUpdateView.as_view()),
-    path('bicicletas/del/<int:pk>/', MnFViews.BicicletaDeleteView.as_view()),
+    path('bicicletas/', views.BicicletaAllAndCreateView.as_view()),
+    path('bicicletas/<int:pk>/', views.BicicletaSingularView.as_view()),
+    
+    path('login/', TokenObtainPairView.as_view()),
+    path('refresh/', TokenRefreshView.as_view()),
+    path('user/', views.UserCreateView.as_view()),
+    path('user/<int:pk>/', views.UserDetailView.as_view()),
 ]

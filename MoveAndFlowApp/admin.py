@@ -9,9 +9,9 @@ from django.contrib import admin
 # from .models.administrador import Administrador
 from .models.estacion import Estacion
 from .models.bicicleta import Bicicleta
+from .models.user import User
 
 admin.site.register(Estacion)
 admin.site.register(Bicicleta)
-
-# admin.site.register(Usuario)
+admin.site.register(User)
 
