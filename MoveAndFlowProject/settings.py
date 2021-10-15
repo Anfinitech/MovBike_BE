@@ -13,11 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta 
 
-# Los siguientes 3 Import tienen que ver con el hashing de la Secret_key y DB Password
-import json
-import os
-from django.core.exceptions import ImproperlyConfigured
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,24 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# Lo siguiente es la funcion que trae el archivo json con las claves SECRET_KEY y BD PASS
-with open(os.path.join(BASE_DIR, 'secrets.json')) as secrets_file:
-    secrets = json.load(secrets_file)
-
-def get_secret(setting, secrets=secrets):
-    """Get secret setting or fail with ImproperlyConfigured"""
-    try:
-        return secrets[setting]
-    except KeyError:
-        raise ImproperlyConfigured("Set the {} setting".format(setting))
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret('SECRET_KEY')
+SECRET_KEY = 'django-insecure-8hhy=l^uuczt-p&jldih$^!0q+#6ah9*epvf6(nr)jxamgv%$_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
 
 
 # Application definition
@@ -56,10 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',#Indica que use rest Framework
     'MoveAndFlowApp',#indica que use la app recientemente creada y url.py puede mapearla/usarla
+    'corsheaders', #frontend guía 14
 ]
 
 SIMPLE_JWT = { 
-            'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5), 
+            'ACCESS_TOKEN_LIFETIME': timedelta(hours=4), 
             'REFRESH_TOKEN_LIFETIME': timedelta(days=1), 
             'ROTATE_REFRESH_TOKENS': False, 
             'BLACKLIST_AFTER_ROTATION': True, 
@@ -78,11 +64,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 REST_FRAMEWORK = {
             'DEFAULT_PERMISSION_CLASSES': (          
-                'rest_framework.permissions.AllowAny',       
+                'rest_framework.permissions.IsAuthenticated',       
             ), 
             'DEFAULT_AUTHENTICATION_CLASSES': ( 
                 'rest_framework_simplejwt.authentication.JWTAuthentication', 
@@ -92,7 +79,7 @@ REST_FRAMEWORK = {
 # Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion 
 # lo dejo comentado mientras hay mas claridad sobre ello
 
-# AUTH_USER_MODEL = 'authApp.Administrador'
+AUTH_USER_MODEL = 'MoveAndFlowApp.User'
 
 
 ROOT_URLCONF = 'MoveAndFlowProject.urls'
@@ -119,17 +106,18 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = { 
+#
+DATABASES = {
         'default': { 
             'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-            'NAME': 'dfot5u7k9ig51u', 
-            'USER': 'jxboinwuudfskn', 
-            'PASSWORD': get_secret('DB_PASSWORD'), 
-            'HOST': 'ec2-54-224-120-186.compute-1.amazonaws.com', 
-            'PORT': '5432',    
-        } 
+            'NAME': 'dbbeqt6m64a4bo', 
+            'USER': 'vdoenzkpioyxku', 
+            'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513', 
+            'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com', 
+            'PORT': '5432',   
+        }    
+        
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -173,3 +161,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import django_heroku
+django_heroku.settings(locals())
