@@ -1,10 +1,13 @@
 from django.conf import settings
 from rest_framework import generics, status
 from rest_framework.response import Response
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny
 
 from MoveAndFlowApp.models.estacion import Estacion
 from MoveAndFlowApp.serializers.estacionSerializer import EstacionSerializer
 
+@permission_classes([AllowAny])
 class EstacionAllAndCreateView(generics.ListCreateAPIView):
     serializer_class = EstacionSerializer
     
@@ -18,7 +21,7 @@ class EstacionAllAndCreateView(generics.ListCreateAPIView):
         serializer.save()
         return Response(request.data['e_nombre'] + " creada con éxito.", status=status.HTTP_201_CREATED)
 
-
+@permission_classes([AllowAny])
 class EstacionSingularView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EstacionSerializer
     queryset = Estacion.objects.all()
