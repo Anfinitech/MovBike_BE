@@ -1,13 +1,9 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from rest_framework.decorators import permission_classes
-from rest_framework.permissions import AllowAny
-
 from MoveAndFlowApp.models.bicicleta import Bicicleta
 from MoveAndFlowApp.serializers.bicicletaSerializer import BicicletaSerializer
 
-@permission_classes([AllowAny])
 class BicicletaAllAndCreateView(generics.ListCreateAPIView):
     serializer_class = BicicletaSerializer
 
@@ -23,7 +19,6 @@ class BicicletaAllAndCreateView(generics.ListCreateAPIView):
     
     
 
-@permission_classes([AllowAny])
 class BicicletaSingularView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BicicletaSerializer
     queryset = Bicicleta.objects.all()

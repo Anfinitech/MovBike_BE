@@ -4,13 +4,11 @@ from django.conf import settings
 from rest_framework import generics, status, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework.decorators import permission_classes
-from rest_framework.permissions import AllowAny
 
 from MoveAndFlowApp.models import User
 from MoveAndFlowApp.serializers.userSerializer import UserSerializer
 
-@permission_classes([AllowAny])
+
 class UserRegisterView(views.APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
@@ -24,7 +22,6 @@ class UserRegisterView(views.APIView):
         
         return Response(tokenSerializer.validated_data, status=status.HTTP_201_CREATED)
 
-@permission_classes([AllowAny])
 class UserAllView(generics.ListAPIView):
     serializer_class = UserSerializer
     queryset = User.objects.all()   
