@@ -4,11 +4,13 @@ from django.conf import settings
 from rest_framework import generics, status, views
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import AllowAny
 
 from MoveAndFlowApp.models import User
 from MoveAndFlowApp.serializers.userSerializer import UserSerializer
 
-
+@permission_classes([AllowAny])
 class UserRegisterView(views.APIView):
     def post(self, request, *args, **kwargs):
         serializer = UserSerializer(data=request.data)
