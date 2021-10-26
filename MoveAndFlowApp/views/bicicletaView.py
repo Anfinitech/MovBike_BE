@@ -19,7 +19,6 @@ class BicicletaAllAndCreateView(generics.ListCreateAPIView):
     
     
 
-
 class BicicletaSingularView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BicicletaSerializer
     queryset = Bicicleta.objects.all()

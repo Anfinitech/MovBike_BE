@@ -18,7 +18,6 @@ class EstacionAllAndCreateView(generics.ListCreateAPIView):
         serializer.save()
         return Response(request.data['e_nombre'] + " creada con éxito.", status=status.HTTP_201_CREATED)
 
-
 class EstacionSingularView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EstacionSerializer
     queryset = Estacion.objects.all()

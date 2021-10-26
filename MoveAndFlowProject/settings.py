@@ -68,17 +68,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "corsheaders.middleware.CorsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+            'DEFAULT_PERMISSION_CLASSES': (          
+                'rest_framework.permissions.AllowAny',       
+            ), 
+            'DEFAULT_AUTHENTICATION_CLASSES': ( 
+                'rest_framework_simplejwt.authentication.JWTAuthentication', 
+            ) 
 }
 
 # Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion
