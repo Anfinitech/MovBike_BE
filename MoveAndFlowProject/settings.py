@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import django_heroku
 from pathlib import Path
-from datetime import timedelta 
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = []
 
-CORS_ALLOWED_ORIGINS = [ "http://localhost:8080",]
+CORS_ALLOWED_ORIGINS = ["http://localhost:8080", ]
 CORS_ALLOW_ALL_ORIGINS = True
 
 
@@ -41,22 +42,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',#Indica que use rest Framework
-    'MoveAndFlowApp',#indica que use la app recientemente creada y url.py puede mapearla/usarla
-    'corsheaders', #frontend guía 14
+    'rest_framework',  # Indica que use rest Framework
+    # indica que use la app recientemente creada y url.py puede mapearla/usarla
+    'MoveAndFlowApp',
+    'corsheaders',  # frontend guía 14
 ]
 
-SIMPLE_JWT = { 
-            'ACCESS_TOKEN_LIFETIME': timedelta(hours=4), 
-            'REFRESH_TOKEN_LIFETIME': timedelta(days=1), 
-            'ROTATE_REFRESH_TOKENS': False, 
-            'BLACKLIST_AFTER_ROTATION': True, 
-            'UPDATE_LAST_LOGIN': False, 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=4),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
 
-            'ALGORITHM': 'HS256', 
-            'USER_ID_FIELD': 'id', 
-            'USER_ID_CLAIM': 'user_id', 
-} 
+    'ALGORITHM': 'HS256',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,15 +72,16 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-            'DEFAULT_PERMISSION_CLASSES': (          
-                'rest_framework.permissions.IsAuthenticated',       
-            ), 
-            'DEFAULT_AUTHENTICATION_CLASSES': ( 
-                'rest_framework_simplejwt.authentication.JWTAuthentication', 
-            ) 
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
-# Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion 
+# Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion
 # lo dejo comentado mientras hay mas claridad sobre ello
 
 AUTH_USER_MODEL = 'MoveAndFlowApp.User'
@@ -110,15 +113,16 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 
 #
 DATABASES = {
-        'default': { 
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', 
-            'NAME': 'dbbeqt6m64a4bo', 
-            'USER': 'vdoenzkpioyxku', 
-            'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513', 
-            'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com', 
-            'PORT': '5432',   
-        }    
-        
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbbeqt6m64a4bo',
+        'USER': 'vdoenzkpioyxku',
+        'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513',
+        'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'TEST': {'MIRROR': 'default',},
+    }
+
 }
 
 # Password validation
@@ -164,5 +168,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
 django_heroku.settings(locals())

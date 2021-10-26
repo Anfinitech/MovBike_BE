@@ -14,6 +14,6 @@ class BicicletaSerializer(serializers.ModelSerializer):
         return {
             "id" : bicicleta.b_id,
             "condicion" : "En buen estado" if bicicleta.b_condicion else "Averiada",
-            "estación_id" : bicicleta.b_en_estacion.e_id,
-            "estacion_nombre" : bicicleta.b_en_estacion.e_nombre,
+            "estación_id" : "Sin estación ID" if bicicleta.b_en_estacion == None else bicicleta.b_en_estacion.e_id,
+            "estacion_nombre" : "Fuera de Estación" if bicicleta.b_en_estacion == None else bicicleta.b_en_estacion.e_nombre,
         }
