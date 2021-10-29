@@ -36,7 +36,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def save(self, **kwargs):
         some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
+        print("Model Pre: " + self.password)
         self.password = make_password(self.password, some_salt)
+        print("Model Pos: " + self.password)
         super().save(**kwargs)
         
     objects = UserManager()
