@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8hhy=l^uuczt-p&jldih$^!0q+#6ah9*epvf6(nr)jxamgv%$_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -72,12 +72,12 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-            'DEFAULT_PERMISSION_CLASSES': (          
-                'rest_framework.permissions.IsAuthenticated',       
-            ), 
-            'DEFAULT_AUTHENTICATION_CLASSES': ( 
-                'rest_framework_simplejwt.authentication.JWTAuthentication', 
-            ) 
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 
 # Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion
@@ -114,12 +114,12 @@ WSGI_APPLICATION = 'MoveAndFlowProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbbeqt6m64a4bo',
-        'USER': 'vdoenzkpioyxku',
-        'PASSWORD': '47643ce18e50b77b9c6a4cd0c930f2ddffeb8b66134f71414f5c756469e25513',
-        'HOST': 'ec2-34-197-105-186.compute-1.amazonaws.com',
+        'NAME': 'localmnf',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
         'PORT': '5432',
-        'TEST': {'MIRROR': 'default',},
+        'TEST': {'MIRROR': 'default', },
     }
 
 }

@@ -34,10 +34,9 @@ class BicicletaSingularView(generics.RetrieveUpdateDestroyAPIView):
         return super().update(request,*args,**kwargs)
 
     def delete(self, request, *args, **kwargs):
-        b_eliminada = self.get_object()
-        b_eliminada_en = self.get_object().b_en_estacion
+        b_eliminada = self.get_object().b_id
         super().destroy(request,*args,**kwargs)
-        return Response(status=status.HTTP_200_OK)
+        return Response('Bicicleta con ID: ' + str(b_eliminada) + ", eliminada con éxito del sistema.", status=status.HTTP_200_OK)
 
 
 '''

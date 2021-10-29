@@ -18,7 +18,6 @@ from django.urls import path
 from MoveAndFlowApp import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from MoveAndFlowApp.views.userView import UserRegisterView, UserAllView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,8 +28,9 @@ urlpatterns = [
     path('bicicletas/', views.BicicletaAllAndCreateView.as_view()),
     path('bicicletas/<int:pk>/', views.BicicletaSingularView.as_view()),
     
-    path('register/', UserRegisterView.as_view()),
+    path('register/', views.UserRegisterView.as_view()),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
-    path('users/', UserAllView.as_view()),
+    path('users/', views.UserAllView.as_view()),
+    path('users/<int:pk>/', views.UserSingularView.as_view()),
 ]
