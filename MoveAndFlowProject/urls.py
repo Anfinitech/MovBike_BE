@@ -28,6 +28,9 @@ urlpatterns = [
     path('bicicletas/', views.BicicletaAllAndCreateView.as_view()),
     path('bicicletas/<int:pk>/', views.BicicletaSingularView.as_view()),
     
+    path('prestamos/', views.PrestamoAllAndCreateView.as_view()),
+    path('prestamos/<int:pk>/', views.PrestamoSingularView.as_view()),
+
     path('register/', views.UserRegisterView.as_view()),
     path('login/', TokenObtainPairView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
