@@ -5,3 +5,4 @@
 from .estacion import Estacion
 from .bicicleta import Bicicleta
 from .user import User
+from .prestamo import Prestamo
