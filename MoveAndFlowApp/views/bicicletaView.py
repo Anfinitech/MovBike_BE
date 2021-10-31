@@ -15,7 +15,7 @@ class BicicletaAllAndCreateView(generics.ListCreateAPIView):
         serializer = BicicletaSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response('Bicicleta creada exitosamente.', status=status.HTTP_201_CREATED)
+        return Response('Bicicleta registrada exitosamente.', status=status.HTTP_201_CREATED)
     
     
 
