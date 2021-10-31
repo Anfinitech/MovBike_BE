@@ -28,8 +28,8 @@ urlpatterns = [
     path('bicicletas/', views.BicicletaAllAndCreateView.as_view()),
     path('bicicletas/<int:pk>/', views.BicicletaSingularView.as_view()),
     
-    path('prestamos/', views.BicicletaAllAndCreateView.as_view()),
-    path('prestamos/<int:pk>/', views.BicicletaSingularView.as_view()),
+    path('prestamos/', views.PrestamoAllAndCreateView.as_view()),
+    path('prestamos/<int:pk>/', views.PrestamoSingularView.as_view()),
 
     path('register/', views.UserRegisterView.as_view()),
     path('users/', views.UserAllView.as_view()),
