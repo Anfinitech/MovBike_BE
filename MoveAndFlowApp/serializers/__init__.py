@@ -1,4 +1,4 @@
 from .estacionSerializer import EstacionSerializer
 from .bicicletaSerializer import BicicletaSerializer
-from .prestamoSerializer import prestamoSereializer
+from .prestamoSerializer import prestamoSerializer
 from .userSerializer import UserSerializer
