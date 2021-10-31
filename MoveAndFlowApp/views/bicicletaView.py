@@ -8,7 +8,7 @@ class BicicletaAllAndCreateView(generics.ListCreateAPIView):
     serializer_class = BicicletaSerializer
 
     def get_queryset(self):
-        queryset = Bicicleta.objects.all().order_by('b_en_estacion')
+        queryset = Bicicleta.objects.all().order_by('b_id')
         return queryset
     
     def post(self, request, *args, **kwargs):
