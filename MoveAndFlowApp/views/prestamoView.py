@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db.models.query import QuerySet
 from rest_framework import generics, status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.pagination import LimitOffsetPagination
 
@@ -35,11 +36,12 @@ class PrestamoAllAndCreateView(generics.ListCreateAPIView):
 
             bicicletas[0].b_en_prestamo = True
 
-            bicicletas[0].b_en_estacion = None
+            #bicicletas[0].b_en_estacion = None
+            
             print(str(vars(bicicletas[0])).split(",")[1:])
             bicicletas[0].save()
 
-            return Response('Préstamo registrado exitosamente.', status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class PrestamoSingularView(generics.RetrieveUpdateDestroyAPIView):
@@ -53,12 +55,8 @@ class PrestamoSingularView(generics.RetrieveUpdateDestroyAPIView):
 
     def put(self, request, *args, **kwargs):
 
-        serializer = PrestamoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)   
-
         bicicleta_id = self.get_object().p_bicicleta.b_id
         bicicleta = Bicicleta.objects.filter(b_id=bicicleta_id)
-
 
         bicicleta[0].b_en_prestamo = False
         bicicleta[0].b_condicion = False
@@ -68,12 +66,13 @@ class PrestamoSingularView(generics.RetrieveUpdateDestroyAPIView):
         bicicleta[0].b_en_estacion.e_id = destino_id
         bicicleta[0].save()
 
-        
+        serializer = PrestamoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)   
         serializer.save()
         
-        super().update(request, *args, **kwargs)
+        #super().update(request, *args, **kwargs)
 
-        return Response('La bici con ID: ' + str(bicicleta_id) + " ha llegado a " + destino_id + ".", status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
     def delete(self, request, *args, **kwargs):
         p_eliminado = self.get_object().p_id

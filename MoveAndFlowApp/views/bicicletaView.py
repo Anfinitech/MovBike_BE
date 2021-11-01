@@ -18,7 +18,6 @@ class BicicletaAllAndCreateView(generics.ListCreateAPIView):
         return Response('Bicicleta registrada exitosamente.', status=status.HTTP_201_CREATED)
     
     
-
 class BicicletaSingularView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BicicletaSerializer
     queryset = Bicicleta.objects.all()
