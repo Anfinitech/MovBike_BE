@@ -77,7 +77,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
 }
 
 # Ver guia de clase 8, Administrador seria el modelo que se utilizaria para la autenticacion

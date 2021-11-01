@@ -7,7 +7,7 @@ class PrestamoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Prestamo
-        fields = ['p_fin', 'p_bicicleta', 'p_origen', 'p_destino']
+        fields = ['p_bicicleta', 'p_origen', 'p_destino']
 
     def to_representation(self, obj):
         prestamo = Prestamo.objects.get(p_id=obj.p_id)
