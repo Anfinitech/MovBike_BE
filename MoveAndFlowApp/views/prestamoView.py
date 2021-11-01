@@ -8,14 +8,14 @@ class PrestamoAllAndCreateView(generics.ListCreateAPIView):
     serializer_class = PrestamoSerializer
 
     def get_queryset(self):
-        queryset = Prestamo.objects.all().order_by('p_id').reverse()
+        queryset = Prestamo.objects.all().order_by('p_id')
         return queryset
     
     def post(self, request, *args, **kwargs):
         serializer = PrestamoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response('Préstamo registrada exitosamente.', status=status.HTTP_201_CREATED)
+        return Response('Préstamo registrado exitosamente.', status=status.HTTP_201_CREATED)
     
     
 
@@ -28,6 +28,7 @@ class PrestamoSingularView(generics.RetrieveUpdateDestroyAPIView):
 
 
     def put(self, request, *args, **kwargs):
+        print('Hola mundo')
         serializer = PrestamoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
