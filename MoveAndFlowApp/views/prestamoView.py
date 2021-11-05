@@ -1,12 +1,13 @@
 from datetime import datetime
 from django.db.models.query import QuerySet
-from rest_framework import generics, status
+from rest_framework import generics, serializers, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.pagination import LimitOffsetPagination
+
 
 from MoveAndFlowApp.models.prestamo import Prestamo
 from MoveAndFlowApp.models.bicicleta import Bicicleta
+from MoveAndFlowApp.serializers import bicicletaSerializer
 from MoveAndFlowApp.serializers.prestamoSerializer import PrestamoSerializer
 
 import json
@@ -48,31 +49,51 @@ class PrestamoSingularView(generics.RetrieveUpdateDestroyAPIView):
 
     
     serializer_class = PrestamoSerializer
+
     queryset = Prestamo.objects.all()
 
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 
-    def put(self, request, *args, **kwargs):
-
-        bicicleta_id = self.get_object().p_bicicleta.b_id
-        bicicleta = Bicicleta.objects.filter(b_id=bicicleta_id)
-
-        bicicleta[0].b_en_prestamo = False
-        bicicleta[0].b_condicion = False
-        destino_id = self.get_object().p_destino.e_id
-
-
-        bicicleta[0].b_en_estacion.e_id = destino_id
-        bicicleta[0].save()
-
-        serializer = PrestamoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)   
-        serializer.save()
+    def patch(self, request, *args, **kwargs):
         
-        #super().update(request, *args, **kwargs)
+        def partial_update(request, *args, **kwargs):
+            print('HOLA')
 
-        return Response(serializer.data, status=status.HTTP_200_OK)
+            kwargs['partial'] = True
+            partial = kwargs.pop('partial', False)
+            print(kwargs)
+
+            bicicleta_id = self.get_object().p_bicicleta.b_id
+            destino_id = self.get_object().p_destino.e_id
+
+
+
+            instance = Bicicleta.objects.filter(b_id=bicicleta_id)[0]
+
+            print(str(vars(instance)).split(",")[1:])
+
+            instance.b_en_prestamo = True
+            instance.b_en_estacion.e_id = 5
+
+            print(instance.b_id)
+            print(str(vars(instance)).split(",")[1:])
+            instance.save()
+            print(instance.b_id)
+            print('CHAO')
+
+            print(str(vars(instance)).split(",")[1:])
+            #return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+        partial_update(self, request, *args, **kwargs)
+
+        '''serializer = PrestamoSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)   
+        serializer.save()'''
+    
+
+        return Response("Hola", status=status.HTTP_200_OK)
 
     def delete(self, request, *args, **kwargs):
         p_eliminado = self.get_object().p_id
