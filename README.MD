@@ -1,5 +1,10 @@
 # README #
 
+You can access our website [MovBike](movbike.herokuapp.com/) to try our WebApp prototype. 
+
+* Username: guest
+* Password: guest
+
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
